@@ -1,11 +1,9 @@
 FROM kalilinux/kali-last-release
 
-WORKDIR /app
-
-COPY . .
-
-RUN chmod +x install-tools.sh && \
-	./install-tools.sh
+RUN apt-get update && \
+	apt-get install -y kali-linux-headless && \
+	apt-get clean && \
+	rm -rf /var/lib/apt/lists/*
 
 CMD ["bash"]
 
